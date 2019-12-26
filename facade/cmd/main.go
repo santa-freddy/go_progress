@@ -10,7 +10,6 @@ import (
 )
 
 func main() {
-	fmt.Println("func the system")
 	var file = "Tears_Of_The_Dragon.flac"
 
 	facade := service.NewServiceFacade(
