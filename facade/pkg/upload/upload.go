@@ -2,17 +2,24 @@ package upload
 
 import "fmt"
 
-//FileUpload struct
-type FileUpload struct {}
-
-//NewUploader ...
-func NewUploader() *FileUpload {
-	return &FileUpload{}
+// Uploader interface
+type Uploader interface {
+	Upload(string) error
 }
 
-//Upload ...
-func (f *FileUpload) Upload(file string) error {
+type fileUpload struct {}
+
+// Upload audio file
+func (f *fileUpload) Upload(file string) error {
+	if file == "" {
+		return fmt.Errorf("no file")
+	}
 	fmt.Println("start uploading")
-	defer fmt.Println("upload done. new file: ", file)
+	fmt.Println("upload done. new file: ", file)
 	return nil
+}
+
+// NewUploader create new uploader
+func NewUploader() Uploader {
+	return &fileUpload{}
 }
