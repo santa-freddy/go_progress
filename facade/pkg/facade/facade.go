@@ -22,7 +22,7 @@ type serviceFacade struct {
 	upload uploader
 }
 
-//UploadAudio upload audio file
+// UploadAudio upload audio file
 func (s *serviceFacade) UploadAudio(file string) error {
 	if err := s.check.Check(file); err != nil {
 		return fmt.Errorf("check err: %s", err.Error())
@@ -37,7 +37,7 @@ func (s *serviceFacade) UploadAudio(file string) error {
 	return nil
 }
 
-//NewServiceFacade create new facade facade
+// NewServiceFacade create new facade service
 func NewServiceFacade(
 	check checker,
 	convert converter,

@@ -9,13 +9,16 @@ type checkFormat struct {
 	Format string
 }
 
-//Checker interface
+// Checker interface
 type Checker interface {
 	Check(string) error
 }
 
-//Check file format
+// Check file format
 func (c *checkFormat) Check(file string) error {
+	if file == "" {
+		return fmt.Errorf("empty file")
+	}
 	format := strings.LastIndex(file, ".")
 	if c.Format != file[format+1:] {
 		return fmt.Errorf("format not available")
